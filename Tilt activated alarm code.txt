@@ -1,0 +1,21 @@
+int tiltSensor = 2; // set the tilt sensor pin
+int ledPin = 13; // set the LED pin
+
+void setup() {
+  pinMode(tiltSensor, INPUT); // set the tilt sensor pin as input
+  pinMode(ledPin, OUTPUT); // set the LED pin as output
+  Serial.begin(9600); // initialize serial communication
+}
+
+void loop() {
+  int tiltValue = digitalRead(tiltSensor); // read the tilt sensor value
+  Serial.println(tiltValue); // print the tilt sensor value to the serial monitor
+  
+  if(tiltValue == HIGH) { // if the tilt sensor is tilted
+    digitalWrite(ledPin, HIGH); // turn on the LED
+  } else { // if the tilt sensor is not tilted
+    digitalWrite(ledPin, LOW); // turn off the LED
+  }
+  
+  delay(500); // wait for 500 milliseconds
+}
